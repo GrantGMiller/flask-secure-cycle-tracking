@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block body %}
+<script>
+  const loadBlob = () => {
+    load(
+      getKey(),
+      (obj) => {
+        console.log("success obj=", obj);
+        $("#user_data_blob").val(JSON.stringify(obj));
+      },
+      (err) => {
+        console.log("error err=", err);
+      }
+    );
+  };
+
+  const saveBlob = () => {
+    save(
+      { current_time: Date() },
+      getKey(),
+      (obj) => {
+        console.log("success obj=", obj);
+      },
+      (err) => {
+        console.log("error err=", err);
+      }
+    );
+  };
+</script>
+
+<!-- Email: <input type="email" id="user_email" />
+      <br />
+      Password: <input type="password" id="user_password" />
+      <br /> -->
+<textarea placeholder="my data blob" id="user_data_blob"> </textarea>
+<br />
+<button onclick="saveBlob()">Save Blob</button>
+<button onclick="loadBlob()">Load Blob</button>
+
+{% endblock %}

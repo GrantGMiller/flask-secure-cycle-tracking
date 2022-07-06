@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block body %}
+<div class="m-1">
+  <div>
+    Last had bleeding: <span id="last_period">test</span>
+    <br />
+    Last had sex: <span id="last_had_sex">test</span>
+    <br />
+    Last had cramping: <span id="last_had_cramping">test</span>
+    <br />
+    Last positive pregnancy test: <span id="last_preg_positive">test</span>
+    <br />
+    Last negative pregnancy test: <span id="last_preg_negative">test</span>
+    <br />
+    Predicted Fertile window: <span id="predicted_fertile_window">test</span>
+    <br />
+    Predicted Next Period: <span id="predicted_next_period">test</span>
+  </div>
+  <hr />
+  <input type="date" placeholder="today" id="input_date" /> (leave blank for
+  today)
+
+  <br />
+  {% for button in buttons %}
+  <button
+    class="btn btn-primary m-1"
+    id="{{button['id']}}"
+    onclick="clickButton('{{button.id}}')"
+  >
+    {{button['text']}}
+  </button>
+  <script>
+    LoadUI();
+  </script>
+  {% endfor %}
+</div>
+{% endblock %}
